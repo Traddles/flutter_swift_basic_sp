@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// Charts example from https://medium.com/flutter-io/beautiful-animated-charts-for-flutter-164940780b8c
 import 'package:charts_flutter/flutter.dart' as charts;
 
 void main() => runApp(new MyApp());
