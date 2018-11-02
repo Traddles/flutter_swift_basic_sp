@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:playground/play2.playground">
+   </FileRef>
+   <FileRef
+      location = "group:playground/play4-view.playground">
+   </FileRef>
+   <FileRef
       location = "group:playground/play3-fft.playground">
    </FileRef>
    <FileRef
