@@ -9,7 +9,9 @@
 import Foundation
 import Accelerate
 
-class FFT {
+public class FFT {
+    
+    public init() {}
     
     fileprivate func getFrequencies(_ N: Int, fps: Double) -> [Double] {
         // Create an Array with the Frequencies
@@ -49,7 +51,7 @@ class FFT {
         return (bandPassFilter, minIdx, maxIdx)
     }
     
-    func calculate(_ _values: [Double], fps: Double) {
+    public func calculate(_ _values: [Double], fps: Double) {
         // ----------------------------------------------------------------
         // Copy of our input
         // ----------------------------------------------------------------
@@ -84,7 +86,8 @@ class FFT {
         
         var valuesAsComplex : UnsafeMutablePointer<DSPDoubleComplex>? = nil
         
-        values.withUnsafeMutableBytes {
+        var val = values.map { $0 }
+        val.withUnsafeMutableBytes {
             valuesAsComplex = $0.baseAddress?.bindMemory(to: DSPDoubleComplex.self, capacity: values.count)
         }
         
