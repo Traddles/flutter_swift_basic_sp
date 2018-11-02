@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+// Charts example from https://medium.com/flutter-io/beautiful-animated-charts-for-flutter-164940780b8c
+import 'package:charts_flutter/flutter.dart' as charts;
 
 void main() => runApp(new MyApp());
 
@@ -42,6 +44,16 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => new _MyHomePageState();
 }
 
+class ClicksPerYear {
+  final String year;
+  final int clicks;
+  final charts.Color color;
+
+  ClicksPerYear(this.year, this.clicks, Color color)
+      : this.color = new charts.Color(
+            r: color.red, g: color.green, b: color.blue, a: color.alpha);
+}
+
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
@@ -64,6 +76,35 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+    var data = [
+      new ClicksPerYear('2016', 12, Colors.red),
+      new ClicksPerYear('2017', 42, Colors.yellow),
+      new ClicksPerYear('2018', _counter, Colors.green),
+    ];
+
+    var series = [
+      new charts.Series(
+        domainFn: (ClicksPerYear clickData, _) => clickData.year,
+        measureFn: (ClicksPerYear clickData, _) => clickData.clicks,
+        colorFn: (ClicksPerYear clickData, _) => clickData.color,
+        id: 'Clicks',
+        data: data,
+      ),
+    ];
+
+    var chart = new charts.BarChart(
+      series,
+      animate: true,
+    );
+
+    var chartWidget = new Padding(
+      padding: new EdgeInsets.all(32.0),
+      child: new SizedBox(
+        height: 200.0,
+        child: chart,
+      ),
+    );
+
     return new Scaffold(
       appBar: new AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -96,6 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
+            chartWidget,
           ],
         ),
       ),

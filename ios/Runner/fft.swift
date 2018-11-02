@@ -1,6 +1,6 @@
 //
 //  fft.swift
-//  ffttest
+//  ffttest (https://github.com/christopherhelf/Swift-FFT-Example)
 //
 //  Created by Christopher Helf on 17.08.15.
 //  Copyright (c) 2015-Present Christopher Helf. All rights reserved.
