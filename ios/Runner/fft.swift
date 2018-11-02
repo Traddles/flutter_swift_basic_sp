@@ -6,6 +6,8 @@
 //  Copyright (c) 2015-Present Christopher Helf. All rights reserved.
 //  Adapted From https://gerrybeauregard.wordpress.com/2013/01/28/using-apples-vdspaccelerate-fft/
 
+// moved to Runner project from Playground by using this article https://medium.com/@LogMaestro/adding-playgrounds-to-your-xcode-project-79d5ea0c7087
+
 import Foundation
 import Accelerate
 
